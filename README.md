@@ -1,2 +1,2 @@
-# Account-Book
+# Account Book System
 OOAD individual project
