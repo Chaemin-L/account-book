@@ -18,13 +18,14 @@ function App(){
   };
 
   return (
-    <>
+    <div>
       <MenuList onClick={onChange} />
       <div>
         {selectList.map(i => i.name)}
         <br />
-        {total}</div>
-    </>
+        {total}
+      </div>
+    </div>
       );
 }
            

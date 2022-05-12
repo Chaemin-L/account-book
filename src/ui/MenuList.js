@@ -1,10 +1,11 @@
 import db from '../database/Menu'
+import './Button.css' 
+
 
 const MenuComponent = ({ menu, onClick }) => {
     return (
-        <button onClick={() => (onClick(menu.name, menu.price)) }>
+        <button className="btn" onClick={() => (onClick(menu.name, menu.price)) }>
             <h2>{menu.name}</h2>
-            <br />
             {menu.price}
         </button>
     );
