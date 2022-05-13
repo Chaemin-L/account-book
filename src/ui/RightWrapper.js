@@ -3,16 +3,16 @@ import './Table.css'
 import './Wrapper.css'
 
 const Header = ({ user, cancel }) => {
-    <div>
-        <span>{user ? user : ""}님 </span>
-        <button onClick={() => cancel("")}>취소</button>
-        <button>장부 확인하기</button>
-    </div>
+    return (<div>
+        <span>{user? user+" 님" : user} </span>
+        {user? <button onClick={() => cancel("")}>취소</button>: null}
+        <button className='btn btn-record'>장부 확인하기</button>
+    </div>);
 };
 
 const Cart = ({ cart, onRmove }) => {
     return (
-        <div className="wrap wrap-table">
+        <div className="wrap-table">
             <table className='table'>
                 <thead>
                     <tr>
@@ -39,7 +39,7 @@ function RightWrapper({selectList, onSelect}) {
     const [user, setUser] = useState("");
    
     return (
-        <div className="wrap container-left">
+        <div className="wrap container-right">
             <Header user={user} cancel={setUser} />
             <Cart cart={selectList} onRemove={onSelect} />
         </div>
