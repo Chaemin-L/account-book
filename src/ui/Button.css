@@ -1,12 +1,14 @@
 .btn{
+    width: 10vw;
+    height: 10vh;    
     margin: 5px;
     padding: 10px;
     border: 0;
     border-radius: 10px;
+    line-height: 20px;
 }
 
 .btn-menu{
-    width: 20%;
     background: #FFBB50;
     color: white;
 }
@@ -17,4 +19,17 @@
 
 .btn:hover{
     cursor: pointer;
+}
+
+.btn span:first-child{
+    font-size: 15px;
+}
+
+.btn span:last-child{
+    font-size: 12px;
+}
+
+.btn-record{
+    float: right;
+    margin-bottom: 20px;
 }
