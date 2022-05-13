@@ -5,10 +5,10 @@ import RightWrapper from './ui/RightWrapper';
 
 function App(){
   const [selectList, setList] = useState([]); // selectList data format [{name, count}, ]
-  const [total, setTotal] = useState(0); // set total
+  //const [total, setTotal] = useState(0); // set total
 
   const addOrder = (name, price) => {
-    setTotal(total + price);
+    //setTotal(total + price);
     if ((selectList.length === 0) || (selectList.filter((menu) => (menu.name === name)).length === 0)) 
       setList([...selectList, { name: name, price: price, count: 1 }]);
      else 

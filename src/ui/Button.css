@@ -33,3 +33,8 @@
     float: right;
     margin-bottom: 20px;
 }
+
+.btn-set{
+    display: flex;
+    justify-content: space-between;
+}
