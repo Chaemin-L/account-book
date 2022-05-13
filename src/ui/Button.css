@@ -7,9 +7,13 @@
 
 .btn-menu{
     width: 20%;
-    background: #FFAA40;
+    background: #FFBB50;
     color: white;
 }
+.btn-menu:hover{
+    background: #FF8820;
+}
+
 
 .btn:hover{
     cursor: pointer;

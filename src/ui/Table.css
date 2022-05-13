@@ -1,0 +1,17 @@
+.table {
+    width: 100%;
+  }
+
+.th,
+td {
+
+    border-bottom: 1px solid #DDDDDD;
+    padding: 20px;
+    text-align: center;
+  }
+tbody tr:nth-child(2n) {
+    background-color: white;
+  }
+tbody tr:nth-child(2n+1) {
+    background-color:#F2F2F2;
+  }

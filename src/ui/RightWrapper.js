@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import './Table.css'
+import './Wrapper.css'
 
 const Header = ({ user, cancel }) => {
     <div>
@@ -10,18 +12,25 @@ const Header = ({ user, cancel }) => {
 
 const Cart = ({ cart, onRmove }) => {
     return (
-        <table>
-  <thead>
-    <tr>
-      <th>메뉴</th>
-      <th>수량</th>
-      <th>총가격</th>
-    </tr>
-        </thead>
-        <tbody>
-        {cart && cart.map(menu => (<tr><td colSpan={'70%'}>{menu.name}</td><td colSpan={'10%'}>{menu.count}</td><td colSpan={'20%'}>{menu.count*menu.price}</td></tr>))}
-        </tbody>    
-    </table>
+        <div className="wrap wrap-table">
+            <table className='table'>
+                <thead>
+                    <tr>
+                        <th className='th' colSpan={'70%'}>메뉴</th>
+                        <th className='th' colSpan={'10%'}>수량</th>
+                        <th className='th' colSpan={'20%'}>총가격</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {cart && cart.map(menu => (
+                        <tr>
+                            <td className='td' colSpan={'70%'}>{menu.name}</td>
+                            <td className='td' colSpan={'10%'}>{menu.count}</td>
+                            <td className='td' colSpan={'20%'}>{menu.count * menu.price}</td>
+                        </tr>))}
+                </tbody>    
+            </table>
+        </div>
     )    
 };
 
@@ -30,7 +39,7 @@ function RightWrapper({selectList, onSelect}) {
     const [user, setUser] = useState("");
    
     return (
-        <div>
+        <div className="wrap container-left">
             <Header user={user} cancel={setUser} />
             <Cart cart={selectList} onRemove={onSelect} />
         </div>

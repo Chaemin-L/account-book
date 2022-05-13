@@ -13,7 +13,7 @@ const MenuComponent = ({ menu, onClick }) => {
 
 const MenuList = ({ onSelect }) => {
     return (
-        <div>
+        <div className="wrap container-right">
             {db.drink && db.drink.map(menu => (<MenuComponent menu={menu} key={menu.id} onClick={onSelect}/>))}
         </div>
     );

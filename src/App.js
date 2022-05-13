@@ -9,7 +9,6 @@ function App(){
 
   const addMenu = (name, price) => {
     setTotal(total + price);
-    //selectList가 비어있거나 등록된 메뉴가 없을 경우 새로운 객체 추가
     if ((selectList.length === 0) || (selectList.filter((menu) => (menu.name === name)).length === 0)) 
       setList([...selectList, { name: name, price: price, count: 1 }]);
      else 
@@ -25,15 +24,11 @@ function App(){
 
 
   return (
-    <div>
+    <div className='wrap wrap-container'>
       <MenuList onSelect={addMenu} />
-      <div>
-        <RightWrapper selectList={selectList} onSelect={removeMenu}/>
-      </div>
+      <RightWrapper selectList={selectList} onSelect={removeMenu}/>
     </div>
       );
 }
            
 export default App;
-
-      

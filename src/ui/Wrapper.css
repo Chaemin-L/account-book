@@ -1,0 +1,19 @@
+.wrap{
+    margin: 0;
+    padding: 20px;
+}
+
+.wrap-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.container-left{
+    flex: 5;
+}
+.container-right{
+    flex: 5;
+}
+.wrap-table{
+    min-width:100px;
+}
