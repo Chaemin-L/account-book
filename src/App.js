@@ -6,16 +6,16 @@ import { Routes, Route } from 'react-router-dom';
 
 
 function App() {
-  
+  const [user, setUser] = useState();
   const [selectList, setList] = useState([]); // selectList data format [{name, count}, ]
  
   return (
     <div className='wrap wrap-container'>
         <Routes>
           <Route path="/" element={<MenuList selectList={selectList} onSelect={setList}/>}/>
-            <Route path="/search" element={<SearchForm />} />
+            <Route path="/search" element={<SearchForm setUser={setUser} />} />
         </Routes>
-      <RightWrapper selectList={selectList} onSelect={setList}/>
+      <RightWrapper user={user} cancel={setUser}selectList={selectList} onSelect={setList}/>
     </div>
   );
 }

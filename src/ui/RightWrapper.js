@@ -6,11 +6,11 @@ import './Wrapper.css'
 
 
 const Header = ({ user, cancel }) => {
-    return (<div>
-        <span>{user? user+" 님" : user} </span>
-        {user? <button onClick={() => cancel("")}>취소</button>: null}
-        <button className='btn btn-record'>장부 확인하기</button>
-    </div>);
+    return (
+        <div>
+            {user && Object.keys(user).length !== 0? <span><span>{user.name} 님</span><button onClick={() => cancel("")}>취소</button></span>: null }
+            <button className='btn btn-record'>장부 확인하기</button>
+        </div>);
 };
 
 const Cart = ({ calc, cart, onRemove }) => {
@@ -45,7 +45,6 @@ const Cart = ({ calc, cart, onRemove }) => {
     </div>);    
 };
 
-
 const ButtonSet = () => {
 
     return (
@@ -58,8 +57,7 @@ const ButtonSet = () => {
     );
 }
 
-function RightWrapper({selectList, onSelect}) {
-    const [user, setUser] = useState("");
+function RightWrapper({user, cancel, selectList, onSelect}) {
     const [total, setTotal] = useState(0);
    
     const removeOrder = (name) => {
@@ -70,7 +68,7 @@ function RightWrapper({selectList, onSelect}) {
     
     return (
         <div className="wrap container-right">
-            <Header user={user} cancel={setUser} />
+            <Header user={user} cancel={cancel} />
             <Cart calc={setTotal} cart={selectList} onRemove={removeOrder} />
             <div className='wrap wrap-total'>
                 <span>합계 </span>
