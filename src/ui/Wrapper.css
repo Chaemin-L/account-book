@@ -5,7 +5,7 @@
 
 .wrap-container{
     height: 90vh;
-    display: inline-flex;
+    display: flex;
     overflow: auto;
 }
 

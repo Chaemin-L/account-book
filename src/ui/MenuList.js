@@ -12,10 +12,17 @@ const MenuComponent = ({ menu, onClick }) => {
     );
 };
 
-const MenuList = ({ onSelect }) => {
+const MenuList = ({ selectList, onSelect }) => {
+    const addOrder = (name, price) => {
+        if ((selectList.length === 0) || (selectList.filter((menu) => (menu.name === name)).length === 0)) 
+          onSelect([...selectList, { name: name, price: price, count: 1 }]);
+         else 
+          onSelect( selectList.map(menu =>(menu.name === name) ? { ...menu, count: menu.count + 1 } : menu))
+    };
+    
     return (
         <div className="container-left">
-            {db.drink && db.drink.map(menu => (<MenuComponent menu={menu} key={menu.id} onClick={onSelect}/>))}
+            {db.drink && db.drink.map(menu => (<MenuComponent menu={menu} key={menu.id} onClick={addOrder}/>))}
         </div>
     );
 };
