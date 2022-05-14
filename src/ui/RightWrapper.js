@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+//import Modal from 'react-modal';
 import './Table.css'
 import './Wrapper.css'
 
@@ -10,13 +11,14 @@ const Header = ({ user, cancel }) => {
     </div>);
 };
 
-const Cart = ({ calc, cart, onRmove }) => {
+const Cart = ({ calc, cart, onRemove }) => {
     let total = 0;
     useEffect(() => {
         // eslint-disable-next-line
-        cart && cart.forEach(menu => calc(total += menu.count * menu.price));
+        cart.length !== 0 ? cart.forEach(menu => calc(total += menu.count * menu.price)) : calc(total = 0);
         return () => total = 0;
     }, [cart]);
+
     return (
         <div className='wrap-cart'>
         <table className='table'>
@@ -30,7 +32,7 @@ const Cart = ({ calc, cart, onRmove }) => {
             <tbody>
                 {cart && cart.map(menu => {
                     return (
-                        <tr>
+                        <tr onClick={()=>onRemove(menu.name)}>
                             <td className='td' colSpan={'70%'}>{menu.name}</td>
                             <td className='td' colSpan={'10%'}>{menu.count}</td>
                             <td className='td' colSpan={'20%'}>{menu.count * menu.price}</td>
@@ -43,12 +45,17 @@ const Cart = ({ calc, cart, onRmove }) => {
 
 
 const ButtonSet = () => {
+    const [searchModal, setSearchModal] = useState(false);
+    const [payModal, setPayModal] = useState(false);
+    const [registerModal, setRegisterModal] = useState(false);
+    const [chargeModal, setChargeModal] = useState(false);
+
     return (
         <div className='btn-set'>
-            <button className='btn'>회원검색</button>
-            <button className='btn'>결제하기</button>
-            <button className='btn'>회원등록</button>
-            <button className='btn'>충전하기</button>
+            <button className='btn' onClick={()=>setSearchModal(!searchModal)}>회원검색</button>
+            <button className='btn' onClick={()=>setPayModal(!payModal)}>결제하기</button>
+            <button className='btn' onClick={()=>setRegisterModal(!registerModal)}>회원등록</button>
+            <button className='btn' onClick={()=>setChargeModal(!chargeModal)}>충전하기</button>
         </div>
     );
 }
