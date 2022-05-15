@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 import './Wrapper.css';
 import './Table.css';
 
-const Header = ({ user, cancel }) => {
+let loginUser; //Wrapper에서 동기화, Header에서 사용
+
+const Header = ({  cancel }) => {
     return (
         <div>
-            {user && Object.keys(user).length !== 0 ? <span><span>{user.name} 님</span><button onClick={() => cancel({})}>취소</button></span>: null }
+            {loginUser && Object.keys(loginUser).length !== 0 ? <span><span>{loginUser.name} 님</span><button onClick={() => cancel({})}>취소</button></span>: null }
             <Link to='/record'><button className='btn btn-record'>장부 확인하기</button></Link>
         </div>);
 };
@@ -44,11 +46,12 @@ const Cart = ({ calc, cart, onRemove }) => {
 };
 
 const ButtonSet = () => {
-
+    let path = '/'
+    
     return (
         <div className='btn-set'>
             <Link to='/search'><button className='btn'>회원검색</button></Link>
-            <Link to='/pay'><button className='btn'>결제하기</button></Link>
+            <Link to={loginUser? '/pay':'/'}><button className='btn'>결제하기</button></Link>
             <Link to='/register'><button className='btn'>회원등록</button></Link>
             <Link to='/save'><button className='btn'>충전하기</button></Link>
         </div>
@@ -56,7 +59,8 @@ const ButtonSet = () => {
 }
 
 function RightWrapper({total, setTotal, user, cancel, selectList, onSelect}) {
-   
+    loginUser = user;
+
     const removeOrder = (name) => {
         let temp = selectList.map(menu => (
           menu = (menu.name === name) ? { ...menu, count: menu.count - 1 } : menu));
@@ -65,7 +69,7 @@ function RightWrapper({total, setTotal, user, cancel, selectList, onSelect}) {
     
     return (
         <div className="wrap container-right">
-            <Header user={user} cancel={cancel} />
+            <Header cancel={cancel} />
             <Cart calc={setTotal} cart={selectList} onRemove={removeOrder} />
             <div className='wrap wrap-total'>
                 <span>합계 </span>
