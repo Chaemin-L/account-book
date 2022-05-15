@@ -4,12 +4,14 @@ import MenuList from './ui/MenuList';
 import SearchForm from './ui/SearchForm';
 import RegisterForm from './ui/RegisterForm';
 import SaveForm from './ui/SaveForm';
+import PayForm from './ui/PayForm';
 import { Routes, Route } from 'react-router-dom';
 
 
 function App() {
   const [loginUser, setLoginUser] = useState({});
   const [selectList, setList] = useState([]); // selectList data format [{name, count}, ]
+  const [total, setTotal] = useState([]);
 
   const [userList, setUserList] = useState(() => {
     const saved = localStorage.getItem('User');
@@ -33,10 +35,9 @@ function App() {
         <Route path="/search" element={<SearchForm userList={userList} setUser={setLoginUser} />} />
         <Route path="/register" element={<RegisterForm addUser={addUser} />} />
         <Route path="/save" element={<SaveForm loginUser={loginUser} userList={userList} updateUser={setUserList} />}/>
-
-        {/*<Route path="/pay" element={<PayForm user={user} />} />*/}
+        <Route path="/pay" element={<PayForm total={total} loginUser={loginUser} userList={userList} updateUser={setUserList} clearCart={setList}/>} />
         </Routes>
-      <RightWrapper user={loginUser} cancel={setLoginUser}selectList={selectList} onSelect={setList}/>
+      <RightWrapper total={total} setTotal={setTotal} user={loginUser} cancel={setLoginUser} selectList={selectList} onSelect={setList}/>
     </div>
   );
 };

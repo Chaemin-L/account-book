@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import {Link} from 'react-router-dom';
 import './Table.css'
 import './Wrapper.css'
@@ -50,15 +50,14 @@ const ButtonSet = () => {
     return (
         <div className='btn-set'>
             <Link to='/search'><button className='btn'>회원검색</button></Link>
-            <Link to='/search'><button className='btn'>결제하기</button></Link>
+            <Link to='/pay'><button className='btn'>결제하기</button></Link>
             <Link to='/register'><button className='btn'>회원등록</button></Link>
             <Link to='/save'><button className='btn'>충전하기</button></Link>
         </div>
     );
 }
 
-function RightWrapper({user, cancel, selectList, onSelect}) {
-    const [total, setTotal] = useState(0);
+function RightWrapper({total, setTotal, user, cancel, selectList, onSelect}) {
    
     const removeOrder = (name) => {
         let temp = selectList.map(menu => (
