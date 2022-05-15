@@ -4,6 +4,7 @@ import './Wrapper.css';
 
 const RegisterForm = ({addUser}) => {
     const [userInfo, setUserInfo] = useState({
+        id: "",
         name: "",
         phoneNumber: "",
         account: 0,
@@ -19,7 +20,8 @@ const RegisterForm = ({addUser}) => {
 
     function submit(e) {
         e.preventDefault();
-        console.log(userInfo);
+        userInfo.id = userInfo.phoneNumber.substring(7);
+        setUserInfo({ ...userInfo, id: userInfo.phoneNumber.substring(7) });
         addUser(userInfo);
     }
 
@@ -30,9 +32,9 @@ const RegisterForm = ({addUser}) => {
                 <input name="name" onChange={saveUser}/>
                 <label>전화번호</label>
                 <input name="phoneNumber" onChange={saveUser}/>
-                <button onClick={submit}><Link to='/'>등록하기</Link></button>
+                <Link to='/'><button onClick={submit}>등록하기</button></Link>
             </form>
-            <button><Link to="/">돌아가기</Link></button>
+            <Link to="/"><button>돌아가기</button></Link>  
         </div>
     );
 }

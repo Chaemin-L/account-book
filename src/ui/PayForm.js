@@ -5,9 +5,11 @@ import './Wrapper.css';
 
 const PayForm = ({ total, loginUser, userList, updateUser, cart, clearCart }) => {
     let newTrans = {
+        id: loginUser.phoneNumber.substring(7),
         name: loginUser.name,
         date: null,
         type: '-',
+        amount: 0,
         menu: cart,
     };
 
@@ -27,9 +29,9 @@ const PayForm = ({ total, loginUser, userList, updateUser, cart, clearCart }) =>
         if (!loginUser||Object.keys(loginUser).length === 0) {
             // 로그인을 요구하는 토스트 메시지 등록.
         } 
-        newTrans = { ...newTrans, date: new Date().toLocaleDateString(), menu: cart };
+        newTrans = { ...newTrans, date: new Date().toLocaleDateString(), menu: cart, amount: total };
         // eslint-disable-next-line
-        updateUser(userList.map(user => (loginUser.phoneNumber === user.phoneNumber) ? { ...user, account: loginUser.account-total } : user));
+        updateUser(userList.map(user => (loginUser.id === user.id) ? { ...user, account: loginUser.account-total } : user));
         (trans.length!==0) ? setTrans(prevTrans => ([...prevTrans, newTrans])) : setTrans([newTrans]);
         clearCart([]);  // 카트 초기화
 

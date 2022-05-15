@@ -12,9 +12,11 @@ const SaveForm = ({ loginUser, userList, updateUser }) => {
     });
 
     let newTrans = {
+        id: loginUser.phoneNumber.substring(7),
         name: loginUser.name,
         date: null,
         type: '+',
+        amount: 0,
         menu: [],
     };
     
@@ -34,9 +36,9 @@ const SaveForm = ({ loginUser, userList, updateUser }) => {
             return;
         } 
         console.log(loginUser)
-        newTrans = { ...newTrans, date: new Date().toLocaleDateString() };
+        newTrans = { ...newTrans, date: new Date().toLocaleDateString(), amount: money };
         // eslint-disable-next-line
-        updateUser(userList.map(user =>  (loginUser.phoneNumber === user.phoneNumber) ? { ...user, account: loginUser.account + money } : user));
+        updateUser(userList.map(user =>  (loginUser.id === user.id) ? { ...user, account: loginUser.account + money } : user));
         (trans.length!==0) ? setTrans(prevTrans => ([...prevTrans, newTrans])) : setTrans([newTrans]);
     }
 
