@@ -8,7 +8,7 @@ import './Wrapper.css'
 const Header = ({ user, cancel }) => {
     return (
         <div>
-            {user && Object.keys(user).length !== 0? <span><span>{user.name} 님</span><button onClick={() => cancel("")}>취소</button></span>: null }
+            {user && Object.keys(user).length !== 0 ? <span><span>{user.name} 님</span><button onClick={() => cancel({})}>취소</button></span>: null }
             <button className='btn btn-record'>장부 확인하기</button>
         </div>);
 };
@@ -51,7 +51,7 @@ const ButtonSet = () => {
         <div className='btn-set'>
             <Link to='/search'><button className='btn'>회원검색</button></Link>
             <Link to='/search'><button className='btn'>결제하기</button></Link>
-            <Link to='/search'><button className='btn'>회원등록</button></Link>
+            <Link to='/register'><button className='btn'>회원등록</button></Link>
             <Link to='/search'><button className='btn'>충전하기</button></Link>
         </div>
     );
