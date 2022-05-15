@@ -44,6 +44,7 @@ const PayForm = ({ total, loginUser, userList, updateUser, cart, clearCart }) =>
                 <div>
                     {Object.keys(loginUser).length !== 0&&<span>{loginUser.name} 님,</span>}
                     <span>결제금액 {total}</span>
+                    <span>현재 보유금액 {loginUser.account}</span>
                 </div>
                 <Link to="/"><button onClick={submit}>결제하기</button></Link>
             </form>
