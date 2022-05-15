@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import RightWrapper from './ui/RightWrapper';
-import MenuList from './ui/MenuList';
-import SearchForm from './ui/SearchForm';
-import RegisterForm from './ui/RegisterForm';
-import SaveForm from './ui/SaveForm';
-import PayForm from './ui/PayForm';
-import RecordListForm from './ui/RecordListForm';
-import RecordUserForm from './ui/RecordUserForm';
-
-
 import { Routes, Route } from 'react-router-dom';
-
+import RightWrapper from './ui/RightWrapper';
+import MenuList from './LeftForm/MenuForm';
+import SearchForm from './LeftForm/SearchForm';
+import RegisterForm from './LeftForm/RegisterForm';
+import SaveForm from './LeftForm/SaveForm';
+import PayForm from './LeftForm/PayForm';
+import RecordListForm from './Record/RecordListForm';
+import RecordUserForm from './Record/RecordUserForm';
 
 function App() {
   const [loginUser, setLoginUser] = useState({});
@@ -36,7 +33,7 @@ function App() {
   return (
     <div className='wrap wrap-container'>
         <Routes>
-          <Route path="/" element={<MenuList selectList={selectList} onSelect={setList}/>}/>
+        <Route path="/" element={<MenuList selectList={selectList} onSelect={setList}/>}/>
         <Route path="/search" element={<SearchForm userList={userList} setUser={setLoginUser} />} />
         <Route path="/register" element={<RegisterForm addUser={addUser} />} />
         <Route path="/save" element={<SaveForm loginUser={loginUser} userList={userList} updateUser={setUserList} />}/>

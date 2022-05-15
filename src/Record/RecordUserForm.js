@@ -1,8 +1,7 @@
-import React, {useEffect, useState} from 'react';
-import { Link, useParams } from 'react-router-dom'
+import React, {useState} from 'react';
+import { useParams } from 'react-router-dom'
 import RecordItem from './RecordItem'
-
-import './Wrapper.css';
+import '../ui/Wrapper.css';
 
 
 const RecordUserForm = () => {

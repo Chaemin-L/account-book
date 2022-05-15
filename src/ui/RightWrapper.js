@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
-import {Link} from 'react-router-dom';
-import './Table.css'
-import './Wrapper.css'
-
-
+import { Link } from 'react-router-dom';
+import './Wrapper.css';
+import './Table.css';
 
 const Header = ({ user, cancel }) => {
     return (

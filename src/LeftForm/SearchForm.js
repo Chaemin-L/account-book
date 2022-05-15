@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import { Link } from 'react-router-dom'
-
-import './Wrapper.css';
+import '../ui/Wrapper.css';
 
 const SearchForm = ({userList, setUser}) => {
     const [match, setMatch] = useState([]);
@@ -14,6 +13,7 @@ const SearchForm = ({userList, setUser}) => {
         console.log(user);
         setUser(user);       
     }
+    
     return (
         <div className="container-left">
             <input onChange={search}/>

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom'
-import './Wrapper.css';
+import '../ui/Wrapper.css';
 
 const SaveForm = ({ loginUser, userList, updateUser }) => {
     
@@ -29,6 +29,7 @@ const SaveForm = ({ loginUser, userList, updateUser }) => {
     function onChange(e) {
         setMoney(Number(e.target.value));
     }
+
     function submit(e) {
         e.preventDefault();
         if (Object.keys(loginUser).length === 0) {
