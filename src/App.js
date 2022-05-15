@@ -3,6 +3,7 @@ import RightWrapper from './ui/RightWrapper';
 import MenuList from './ui/MenuList';
 import SearchForm from './ui/SearchForm';
 import RegisterForm from './ui/RegisterForm';
+import SaveForm from './ui/SaveForm';
 import { Routes, Route } from 'react-router-dom';
 
 
@@ -29,8 +30,10 @@ function App() {
     <div className='wrap wrap-container'>
         <Routes>
           <Route path="/" element={<MenuList selectList={selectList} onSelect={setList}/>}/>
-        <Route path="/search" element={<SearchForm setUser={setLoginUser} />} />
+        <Route path="/search" element={<SearchForm userList={userList} setUser={setLoginUser} />} />
         <Route path="/register" element={<RegisterForm addUser={addUser} />} />
+        <Route path="/save" element={<SaveForm loginUser={loginUser} userList={userList} updateUser={setUserList} />}/>
+
         {/*<Route path="/pay" element={<PayForm user={user} />} />*/}
         </Routes>
       <RightWrapper user={loginUser} cancel={setLoginUser}selectList={selectList} onSelect={setList}/>

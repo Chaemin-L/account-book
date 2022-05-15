@@ -52,7 +52,7 @@ const ButtonSet = () => {
             <Link to='/search'><button className='btn'>회원검색</button></Link>
             <Link to='/search'><button className='btn'>결제하기</button></Link>
             <Link to='/register'><button className='btn'>회원등록</button></Link>
-            <Link to='/search'><button className='btn'>충전하기</button></Link>
+            <Link to='/save'><button className='btn'>충전하기</button></Link>
         </div>
     );
 }
