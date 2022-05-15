@@ -9,7 +9,7 @@ const Header = ({ user, cancel }) => {
     return (
         <div>
             {user && Object.keys(user).length !== 0 ? <span><span>{user.name} 님</span><button onClick={() => cancel({})}>취소</button></span>: null }
-            <button className='btn btn-record'>장부 확인하기</button>
+            <Link to='/record'><button className='btn btn-record'>장부 확인하기</button></Link>
         </div>);
 };
 
