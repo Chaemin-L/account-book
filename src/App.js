@@ -20,8 +20,9 @@ function App() {
   });
   
   useEffect(() => {
-  localStorage.setItem('User', JSON.stringify(userList));
-}, [userList]);
+    localStorage.setItem('User', JSON.stringify(userList));
+    setLoginUser(userList.filter(user => (user.phoneNumber === loginUser.phoneNumber))[0]);
+  }, [userList]);
   
   const addUser = (user) => {
     setLoginUser(user);
@@ -35,7 +36,7 @@ function App() {
         <Route path="/search" element={<SearchForm userList={userList} setUser={setLoginUser} />} />
         <Route path="/register" element={<RegisterForm addUser={addUser} />} />
         <Route path="/save" element={<SaveForm loginUser={loginUser} userList={userList} updateUser={setUserList} />}/>
-        <Route path="/pay" element={<PayForm total={total} loginUser={loginUser} userList={userList} updateUser={setUserList} clearCart={setList}/>} />
+        <Route path="/pay" element={<PayForm total={total} loginUser={loginUser} userList={userList} updateUser={setUserList} cart={selectList} clearCart={setList}/>} />
         </Routes>
       <RightWrapper total={total} setTotal={setTotal} user={loginUser} cancel={setLoginUser} selectList={selectList} onSelect={setList}/>
     </div>

@@ -1,16 +1,36 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom'
 import './Wrapper.css';
 
-const PayForm = ({ total, loginUser, userList, updateUser, clearCart }) => {
+
+const PayForm = ({ total, loginUser, userList, updateUser, cart, clearCart }) => {
+    let newTrans = {
+        name: loginUser.name,
+        date: null,
+        type: '-',
+        menu: cart,
+    };
+
+    const [trans, setTrans] = useState(() => {
+        const saved = localStorage.getItem('Transaction');
+        const initialValue = JSON.parse(saved);
+        return initialValue || [];
+    });
+    
+    useEffect(() => {
+        localStorage.setItem('Transaction', JSON.stringify(trans));
+    }, [trans]);
+    
+
     function submit(e) {
         e.preventDefault();
         if (!loginUser||Object.keys(loginUser).length === 0) {
             // 로그인을 요구하는 토스트 메시지 등록.
-            return;
         } 
+        newTrans = { ...newTrans, date: new Date().toLocaleDateString(), menu: cart };
         // eslint-disable-next-line
-        updateUser(userList.map(user => (loginUser == user) ? { ...user, account: loginUser.account - total } : user));
+        updateUser(userList.map(user => (loginUser.phoneNumber === user.phoneNumber) ? { ...user, account: loginUser.account-total } : user));
+        (trans.length!==0) ? setTrans(prevTrans => ([...prevTrans, newTrans])) : setTrans([newTrans]);
         clearCart([]);  // 카트 초기화
 
         // 결제 완료 토스트 메시지 등록
@@ -20,12 +40,12 @@ const PayForm = ({ total, loginUser, userList, updateUser, clearCart }) => {
         <div className="container-left">
             <form>
                 <div>
-                    {loginUser&&<span>{loginUser.name} 님,</span>}
+                    {Object.keys(loginUser).length !== 0&&<span>{loginUser.name} 님,</span>}
                     <span>결제금액 {total}</span>
                 </div>
-                <button onClick={submit}><Link to="/">결제하기</Link></button>
+                <Link to="/"><button onClick={submit}>결제하기</button></Link>
             </form>
-            <button><Link to="/">돌아가기</Link></button>
+            <Link to="/"><button>돌아가기</button></Link>
         </div>
     );
 }
