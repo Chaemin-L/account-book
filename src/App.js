@@ -5,6 +5,10 @@ import SearchForm from './ui/SearchForm';
 import RegisterForm from './ui/RegisterForm';
 import SaveForm from './ui/SaveForm';
 import PayForm from './ui/PayForm';
+import RecordListForm from './ui/RecordListForm';
+import RecordUserForm from './ui/RecordUserForm';
+
+
 import { Routes, Route } from 'react-router-dom';
 
 
@@ -36,8 +40,10 @@ function App() {
         <Route path="/search" element={<SearchForm userList={userList} setUser={setLoginUser} />} />
         <Route path="/register" element={<RegisterForm addUser={addUser} />} />
         <Route path="/save" element={<SaveForm loginUser={loginUser} userList={userList} updateUser={setUserList} />}/>
-        <Route path="/pay" element={<PayForm total={total} loginUser={loginUser} userList={userList} updateUser={setUserList} cart={selectList} clearCart={setList}/>} />
-        </Routes>
+        <Route path="/pay" element={<PayForm total={total} loginUser={loginUser} userList={userList} updateUser={setUserList} cart={selectList} clearCart={setList} />} />
+        <Route path="/record" element={<RecordListForm userList={userList} />} />
+        <Route path="/record/:id" element={<RecordUserForm />} />  
+      </Routes>
       <RightWrapper total={total} setTotal={setTotal} user={loginUser} cancel={setLoginUser} selectList={selectList} onSelect={setList}/>
     </div>
   );
