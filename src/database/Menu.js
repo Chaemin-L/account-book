@@ -28,7 +28,7 @@ const Menu = {
             price: 3800,
         },
         
-        // juice
+        // ade
 
         {
             id: "lemonAde",
@@ -53,6 +53,35 @@ const Menu = {
         {
             id: "plumAde",
             name: "매실에이드",
+            price: 3500,
+        },
+
+
+        // smoothie
+
+        {
+            id: "blueberry",
+            name: "블루베리스무디",
+            price: 3500,
+        },
+        {
+            id: "strawberry",
+            name: "딸기스무디",
+            price: 3500,
+        },
+        {
+            id: "banana",
+            name: "바나나스무디",
+            price: 3500,
+        },
+        {
+            id: "Mango",
+            name: "망고스무디",
+            price: 3500,
+        },
+        {
+            id: "plain",
+            name: "플레인요거트스무디",
             price: 3500,
         },
     ]
