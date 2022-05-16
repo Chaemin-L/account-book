@@ -1,5 +1,5 @@
-import db from '../database/Menu'
-import '../ui/Button.css' 
+import db from '../Database/Menu'
+import '../CSS/Button.css' 
 
 const MenuComponent = ({ menu, onClick }) => {
     return (

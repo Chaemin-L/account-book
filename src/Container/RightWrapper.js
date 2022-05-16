@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import swal from 'sweetalert';
-import './Wrapper.css';
-import './Table.css';
+import '../CSS/Wrapper.css';
+import '../CSS/Table.css';
 
 let loginUser; //Wrapper에서 동기화, Header에서 사용
 
-const Header = ({  cancel }) => {
+const Header = ({ cancel }) => {
     return (
         <div>
             {loginUser && Object.keys(loginUser).length !== 0 ? <span><span>{loginUser.name} 님</span><button onClick={() => cancel()}>로그아웃</button></span>: null }

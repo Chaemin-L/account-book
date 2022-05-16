@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom'
-import '../ui/Wrapper.css';
+import '../CSS/Wrapper.css';
 
 
 const PayForm = ({ total, loginUser, userList, updateUser, cart, clearCart }) => {
@@ -26,9 +26,6 @@ const PayForm = ({ total, loginUser, userList, updateUser, cart, clearCart }) =>
 
     function submit(e) {
         e.preventDefault();
-        if (!loginUser||Object.keys(loginUser).length === 0) {
-            // 로그인을 요구하는 토스트 메시지 등록.
-        } 
         newTrans = { ...newTrans, date: new Date().toLocaleDateString(), menu: cart, amount: total };
         // eslint-disable-next-line
         updateUser(userList.map(user => (loginUser.id === user.id) ? { ...user, account: loginUser.account-total } : user));
@@ -36,6 +33,7 @@ const PayForm = ({ total, loginUser, userList, updateUser, cart, clearCart }) =>
         clearCart([]);  // 카트 초기화
 
         // 결제 완료 토스트 메시지 등록
+        alert("결제가 완료되었습니다.");
     }
 
     return (

@@ -1,12 +1,11 @@
 import React, {useState} from 'react';
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import RecordItem from './RecordItem'
-import '../ui/Wrapper.css';
+import '../CSS/Wrapper.css';
 
 
 const RecordUserForm = () => {
     const { id } = useParams();
-    let cnt = 0;
 
     const [trans, setTrans] = useState(() => {
         const saved = localStorage.getItem('Transaction');

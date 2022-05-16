@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import '../ui/Wrapper.css';
+import '../CSS/Wrapper.css';
 
 
 const RecordListForm = ({ userList }) => {

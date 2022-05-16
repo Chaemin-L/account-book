@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom'
-import '../ui/Wrapper.css';
+import '../CSS/Wrapper.css';
 
 const SaveForm = ({ loginUser, userList, updateUser }) => {
     
@@ -32,11 +32,6 @@ const SaveForm = ({ loginUser, userList, updateUser }) => {
 
     function submit(e) {
         e.preventDefault();
-        if (Object.keys(loginUser).length === 0) {
-            // 로그인을 요구하는 토스트 메시지 등록.
-            return;
-        } 
-        console.log(loginUser)
         newTrans = { ...newTrans, date: new Date().toLocaleDateString(), amount: money };
         // eslint-disable-next-line
         updateUser(userList.map(user =>  (loginUser.id === user.id) ? { ...user, account: loginUser.account + money } : user));

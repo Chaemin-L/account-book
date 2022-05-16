@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { Link } from 'react-router-dom'
-import '../ui/Wrapper.css';
+import '../CSS/Wrapper.css';
 
 const SearchForm = ({userList, setUser}) => {
     const [match, setMatch] = useState([]);

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import RightWrapper from './ui/RightWrapper';
-import MenuList from './LeftForm/MenuForm';
-import SearchForm from './LeftForm/SearchForm';
-import RegisterForm from './LeftForm/RegisterForm';
-import SaveForm from './LeftForm/SaveForm';
-import PayForm from './LeftForm/PayForm';
+import RightWrapper from './Container/RightWrapper';
+import MenuList from './Container/MenuForm';
+import SearchForm from './Container/SearchForm';
+import RegisterForm from './Container/RegisterForm';
+import SaveForm from './Container/SaveForm';
+import PayForm from './Container/PayForm';
 import RecordListForm from './Record/RecordListForm';
 import RecordUserForm from './Record/RecordUserForm';
 
