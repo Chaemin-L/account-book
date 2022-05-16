@@ -9,7 +9,7 @@ let loginUser; //Wrapper에서 동기화, Header에서 사용
 const Header = ({  cancel }) => {
     return (
         <div>
-            {loginUser && Object.keys(loginUser).length !== 0 ? <span><span>{loginUser.name} 님</span><button onClick={() => cancel({})}>취소</button></span>: null }
+            {loginUser && Object.keys(loginUser).length !== 0 ? <span><span>{loginUser.name} 님</span><button onClick={() => cancel()}>로그아웃</button></span>: null }
             <Link to='/record'><button className='btn btn-record'>장부 확인하기</button></Link>
         </div>);
 };
