@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import swal from 'sweetalert';
 import './Wrapper.css';
 import './Table.css';
 
@@ -16,7 +17,6 @@ const Header = ({  cancel }) => {
 const Cart = ({ calc, cart, onRemove }) => {
     let total = 0;
     useEffect(() => {
-        // eslint-disable-next-line
         cart.length !== 0 ? cart.forEach(menu => calc(total += menu.count * menu.price)) : calc(total = 0);
         return () => total = 0;
     }, [cart]);
@@ -46,14 +46,15 @@ const Cart = ({ calc, cart, onRemove }) => {
 };
 
 const ButtonSet = () => {
-    let path = '/'
     
+    const caution = () => swal("알림", "로그인이 필요한 기능입니다.", "info");
+
     return (
         <div className='btn-set'>
             <Link to='/search'><button className='btn'>회원검색</button></Link>
-            <Link to={loginUser? '/pay':'/'}><button className='btn'>결제하기</button></Link>
+            <Link to={loginUser? '/pay':'/'}><button className='btn' onClick={caution}>결제하기</button></Link>
             <Link to='/register'><button className='btn'>회원등록</button></Link>
-            <Link to={loginUser ? '/save' : '/'}><button className='btn'>충전하기</button></Link>
+            <Link to={loginUser ? '/save' : '/'}><button className='btn' onClick={caution}>충전하기</button></Link>
         </div>
     );
 }
