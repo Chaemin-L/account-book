@@ -52,9 +52,9 @@ const ButtonSet = () => {
     return (
         <div className='btn-set'>
             <Link to='/search'><button className='btn'>회원검색</button></Link>
-            <Link to={loginUser? '/pay':'/'}><button className='btn' onClick={caution}>결제하기</button></Link>
+            <Link to={loginUser ? '/pay' : '/'}><button className='btn' onClick={() => { if (!loginUser) caution(); }}>결제하기</button></Link>
             <Link to='/register'><button className='btn'>회원등록</button></Link>
-            <Link to={loginUser ? '/save' : '/'}><button className='btn' onClick={caution}>충전하기</button></Link>
+            <Link to={loginUser ? '/save' : '/'}><button className='btn' onClick={() => { if (!loginUser) caution(); }}>충전하기</button></Link>
         </div>
     );
 }
