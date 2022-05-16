@@ -10,6 +10,7 @@ const RecordListForm = ({ userList }) => {
             <ul>
                 {userList.map(user => (<Link to={`/record/${user.id}`}><li key={user.id}>{user.name} || {user.phoneNumber} || {user.account}</li></Link>))}
             </ul>
+            <Link to='/record'><button>뒤로가기</button></Link>
         </div>
     )
 };

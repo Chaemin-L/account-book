@@ -18,6 +18,8 @@ const RecordUserForm = () => {
             <div>
                 {trans.filter((record) => (record.id === id)).map((match, i) => <RecordItem key={i} record={match} />)}
             </div>
+            {(trans.length !== 0) && <button>출력하기</button>}
+            <Link to='/record'><button>뒤로가기</button></Link>
         </div>
     )
 };
