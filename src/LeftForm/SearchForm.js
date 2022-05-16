@@ -17,7 +17,7 @@ const SearchForm = ({userList, setUser}) => {
     return (
         <div className="container-left">
             <input onChange={search}/>
-            <button><Link to='/'>돌아가기</Link></button>
+            <Link to='/'><button>돌아가기</button></Link>
             <ul>
                 {match.map((user, i) => <li key={i} onClick={() => { selectUser(user) }}><Link to='/'>{user.name}  {user.phoneNumber}  {user.account}</Link></li>)}
             </ul>
