@@ -26,6 +26,10 @@ const PayForm = ({ total, loginUser, userList, updateUser, cart, clearCart }) =>
 
     function submit(e) {
         e.preventDefault();
+        if (total === 0) {
+            swal("결제불가!", "상품을 먼저 선택해주세요.", "error");
+            return;
+        }
         newTrans = { ...newTrans, date: new Date().toLocaleDateString(), menu: cart, amount: total };
         // eslint-disable-next-line
         updateUser(userList.map(user => (loginUser.id === user.id) ? { ...user, account: loginUser.account-total } : user));

@@ -31,6 +31,10 @@ const SaveForm = ({ loginUser, userList, updateUser }) => {
 
     function submit(e) {
         e.preventDefault();
+        if (money === 0) {
+            swal("충전불가!", "충전 금액을 먼저 입력해주세요.", "error");
+            return;
+        }
         newTrans = { ...newTrans, date: new Date().toLocaleDateString(), amount: money };
         // eslint-disable-next-line
         updateUser(userList.map(user =>  (loginUser.id === user.id) ? { ...user, account: loginUser.account + money } : user));
