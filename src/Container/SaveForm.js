@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom'
 import '../CSS/Wrapper.css';
+import swal from 'sweetalert';
 
 const SaveForm = ({ loginUser, userList, updateUser }) => {
     
@@ -33,7 +34,8 @@ const SaveForm = ({ loginUser, userList, updateUser }) => {
         newTrans = { ...newTrans, date: new Date().toLocaleDateString(), amount: money };
         // eslint-disable-next-line
         updateUser(userList.map(user =>  (loginUser.id === user.id) ? { ...user, account: loginUser.account + money } : user));
-        (trans.length!==0) ? setTrans(prevTrans => ([...prevTrans, newTrans])) : setTrans([newTrans]);
+        (trans.length !== 0) ? setTrans(prevTrans => ([...prevTrans, newTrans])) : setTrans([newTrans]);
+        swal("완료!", "정상적으로 금액이 충전되었습니다.", "success");
     }
 
     return (

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom'
 import '../CSS/Wrapper.css';
-
+import swal from 'sweetalert';
 
 const PayForm = ({ total, loginUser, userList, updateUser, cart, clearCart }) => {
     let newTrans = {
@@ -33,7 +33,7 @@ const PayForm = ({ total, loginUser, userList, updateUser, cart, clearCart }) =>
         clearCart([]);  // 카트 초기화
 
         // 결제 완료 토스트 메시지 등록
-        alert("결제가 완료되었습니다.");
+        swal("완료!", "정상적으로 금액이 사용되었습니다.", "success");
     }
 
     return (
