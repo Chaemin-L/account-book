@@ -9,7 +9,7 @@ let loginUser; //Wrapper에서 동기화, Header에서 사용
 const Header = ({ logout }) => {
     return (
         <div>
-            {loginUser && Object.keys(loginUser).length !== 0 ? <span><span>{loginUser.name} 님</span><button onClick={() => logout()}>로그아웃</button></span>: null }
+            {loginUser && Object.keys(loginUser).length !== 0 ? <div><span>{loginUser.name} 님</span><button onClick={() => logout()}>로그아웃</button></div>: null }
             <Link to='/record'><button className='btn btn-record'>장부 확인하기</button></Link>
         </div>);
 };
@@ -60,7 +60,7 @@ const ButtonSet = () => {
     );
 }
 
-function Pannel({total, setTotal, user, cancel, selectList, onSelect}) {
+function Pannel({total, setTotal, user, logout, selectList, onSelect}) {
     loginUser = user;
 
     const removeOrder = (name) => {
@@ -71,7 +71,7 @@ function Pannel({total, setTotal, user, cancel, selectList, onSelect}) {
     
     return (
         <div className="wrap container-right">
-            <Header cancel={cancel} />
+            <Header logout={logout} />
             <Cart calc={setTotal} cart={selectList} onRemove={removeOrder} />
             <div className='wrap wrap-total'>
                 <span>합계 </span>
