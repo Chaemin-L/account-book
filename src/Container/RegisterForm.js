@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import '../CSS/Wrapper.css';
 
 const RegisterForm = ({addUser}) => {
-    const [userInfo, setUserInfo] = useState({
+    const [newUser, setNewUser] = useState({
         id: "",
         name: "",
         phoneNumber: "",
@@ -12,17 +12,17 @@ const RegisterForm = ({addUser}) => {
 
     function saveUser(e) {
         const { name, value } = e.target;
-        setUserInfo({
-            ...userInfo,
+        setNewUser({
+            ...newUser,
             [name]: value,
         });
     }
 
     function submit(e) {
         e.preventDefault();
-        userInfo.id = userInfo.phoneNumber.substring(7);
-        setUserInfo({ ...userInfo, id: userInfo.phoneNumber.substring(7) });
-        addUser(userInfo);
+        newUser.id = newUser.phoneNumber.substring(7);
+        setNewUser({ ...newUser, id: newUser.phoneNumber.substring(7) });
+        addUser(newUser);
     }
 
     return (

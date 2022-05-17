@@ -7,6 +7,7 @@ import '../CSS/Wrapper.css';
 const RecordUserForm = () => {
     const { id } = useParams();
 
+    // eslint-disable-next-line
     const [trans, setTrans] = useState(() => {
         const saved = localStorage.getItem('Transaction');
         const initialValue = JSON.parse(saved);

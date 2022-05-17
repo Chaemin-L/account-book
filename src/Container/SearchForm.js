@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { Link } from 'react-router-dom'
 import '../CSS/Wrapper.css';
 
-const SearchForm = ({userList, setUser}) => {
+const SearchForm = ({userList, setLoginUser}) => {
     const [match, setMatch] = useState([]);
 
     function search(e) {
@@ -11,7 +11,7 @@ const SearchForm = ({userList, setUser}) => {
 
     function selectUser(user) {
         console.log(user);
-        setUser(user);       
+        setLoginUser(user);       
     }
     
     return (

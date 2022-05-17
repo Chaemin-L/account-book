@@ -1,7 +1,7 @@
 import db from '../Database/Menu'
 import '../CSS/Button.css' 
 
-const MenuComponent = ({ menu, onClick }) => {
+const MenuItem = ({ menu, onClick }) => {
     return (
         <button className="btn btn-menu" onClick={() => (onClick(menu.name, menu.price)) }>
             <span>{menu.name}</span>
@@ -21,7 +21,7 @@ const MenuList = ({ selectList, onSelect }) => {
     
     return (
         <div className="container-left">
-            {db.drink && db.drink.map(menu => (<MenuComponent menu={menu} key={menu.id} onClick={addOrder}/>))}
+            {db.drink && db.drink.map(menu => (<MenuItem menu={menu} key={menu.id} onClick={addOrder}/>))}
         </div>
     );
 };

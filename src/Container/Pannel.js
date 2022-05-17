@@ -6,10 +6,10 @@ import '../CSS/Table.css';
 
 let loginUser; //Wrapper에서 동기화, Header에서 사용
 
-const Header = ({ cancel }) => {
+const Header = ({ logout }) => {
     return (
         <div>
-            {loginUser && Object.keys(loginUser).length !== 0 ? <span><span>{loginUser.name} 님</span><button onClick={() => cancel()}>로그아웃</button></span>: null }
+            {loginUser && Object.keys(loginUser).length !== 0 ? <span><span>{loginUser.name} 님</span><button onClick={() => logout()}>로그아웃</button></span>: null }
             <Link to='/record'><button className='btn btn-record'>장부 확인하기</button></Link>
         </div>);
 };
@@ -17,6 +17,7 @@ const Header = ({ cancel }) => {
 const Cart = ({ calc, cart, onRemove }) => {
     let total = 0;
     useEffect(() => {
+        // eslint-disable-next-line
         cart.length !== 0 ? cart.forEach(menu => calc(total += menu.count * menu.price)) : calc(total = 0);
         return () => total = 0;
     }, [cart]);
@@ -59,7 +60,7 @@ const ButtonSet = () => {
     );
 }
 
-function RightWrapper({total, setTotal, user, cancel, selectList, onSelect}) {
+function Pannel({total, setTotal, user, cancel, selectList, onSelect}) {
     loginUser = user;
 
     const removeOrder = (name) => {
@@ -83,4 +84,4 @@ function RightWrapper({total, setTotal, user, cancel, selectList, onSelect}) {
 
 };
 
-export default RightWrapper;
+export default Pannel;

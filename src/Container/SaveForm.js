@@ -22,8 +22,6 @@ const SaveForm = ({ loginUser, userList, updateUser }) => {
     
     useEffect(() => {
         localStorage.setItem('Transaction', JSON.stringify(trans));
-        console.log("change localStorage!");
-        console.log("trans", trans);
     }, [trans]);
 
     function onChange(e) {
