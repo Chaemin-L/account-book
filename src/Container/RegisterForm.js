@@ -1,27 +1,23 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom'
 import '../CSS/Wrapper.css';
+import User from '../Database/User';
 
 const RegisterForm = ({addUser}) => {
-    const [newUser, setNewUser] = useState({
-        id: "",
-        name: "",
-        phoneNumber: "",
-        account: 0,
-    });
+    let newUser = new User();
 
     function saveUser(e) {
         const { name, value } = e.target;
-        setNewUser({
+        newUser = {
             ...newUser,
             [name]: value,
-        });
+        };
     }
 
     function submit(e) {
         e.preventDefault();
         newUser.id = newUser.phoneNumber.substring(7);
-        setNewUser({ ...newUser, id: newUser.phoneNumber.substring(7) });
+        newUser = { ...newUser, id: newUser.phoneNumber.substring(7) };
         addUser(newUser);
     }
 

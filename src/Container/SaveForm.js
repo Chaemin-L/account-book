@@ -2,9 +2,9 @@ import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom'
 import '../CSS/Wrapper.css';
 import swal from 'sweetalert';
+import Trans from '../Database/Trans';
 
 const SaveForm = ({ loginUser, userList, updateUser }) => {
-    
     const [money, setMoney] = useState(0)
     const [trans, setTrans] = useState(() => {
         const saved = localStorage.getItem('Transaction');
@@ -12,14 +12,12 @@ const SaveForm = ({ loginUser, userList, updateUser }) => {
         return initialValue || [];
     });
 
-    let newTrans = {
-        id: loginUser.phoneNumber.substring(7),
-        name: loginUser.name,
-        date: null,
-        type: '+',
-        amount: 0,
-        menu: [],
-    };
+    let newTrans = new Trans(
+        loginUser.phoneNumber.substring(7),
+        loginUser.name,
+        null,
+        '+',
+    );
     
     useEffect(() => {
         localStorage.setItem('Transaction', JSON.stringify(trans));

@@ -2,16 +2,17 @@ import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom'
 import '../CSS/Wrapper.css';
 import swal from 'sweetalert';
+import Trans from '../Database/Trans';
 
 const PayForm = ({ total, loginUser, userList, updateUser, cart, clearCart }) => {
-    let newTrans = {
-        id: loginUser.phoneNumber.substring(7),
-        name: loginUser.name,
-        date: null,
-        type: '-',
-        amount: 0,
-        menu: cart,
-    };
+    let newTrans = new Trans(
+        loginUser.phoneNumber.substring(7),
+        loginUser.name,
+        null,
+        '-',
+        0,
+        cart,
+    );
 
     const [trans, setTrans] = useState(() => {
         const saved = localStorage.getItem('Transaction');
