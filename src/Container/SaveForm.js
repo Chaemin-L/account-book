@@ -1,28 +1,19 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import { Link } from 'react-router-dom'
 import '../CSS/Wrapper.css';
 import swal from 'sweetalert';
 import Trans from '../Database/Trans';
+import WriteTrans from '../Functions/WriteTrans';
 
 const SaveForm = ({ loginUser, userList, updateUser }) => {
-    const [money, setMoney] = useState(0)
-    const [trans, setTrans] = useState(() => {
-        const saved = localStorage.getItem('Transaction');
-        const initialValue = JSON.parse(saved);
-        return initialValue || [];
-    });
+    const [money, setMoney] = useState(0);
 
     let newTrans = new Trans(
         loginUser.phoneNumber.substring(7),
         loginUser.name,
         null,
-        '+',
     );
     
-    useEffect(() => {
-        localStorage.setItem('Transaction', JSON.stringify(trans));
-    }, [trans]);
-
     function onChange(e) {
         setMoney(Number(e.target.value));
     }
@@ -34,9 +25,7 @@ const SaveForm = ({ loginUser, userList, updateUser }) => {
             return;
         }
         newTrans = { ...newTrans, date: new Date().toLocaleDateString(), amount: money };
-        // eslint-disable-next-line
-        updateUser(userList.map(user =>  (loginUser.id === user.id) ? { ...user, account: loginUser.account + money } : user));
-        (trans.length !== 0) ? setTrans(prevTrans => ([...prevTrans, newTrans])) : setTrans([newTrans]);
+        WriteTrans(userList, loginUser, updateUser, newTrans);
         swal("완료!", "정상적으로 금액이 충전되었습니다.", "success");
     }
 

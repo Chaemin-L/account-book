@@ -1,29 +1,19 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom'
 import '../CSS/Wrapper.css';
 import swal from 'sweetalert';
 import Trans from '../Database/Trans';
+import WriteTrans from '../Functions/WriteTrans';
+
 
 const PayForm = ({ total, loginUser, userList, updateUser, cart, clearCart }) => {
     let newTrans = new Trans(
         loginUser.phoneNumber.substring(7),
         loginUser.name,
         null,
-        '-',
         0,
         cart,
     );
-
-    const [trans, setTrans] = useState(() => {
-        const saved = localStorage.getItem('Transaction');
-        const initialValue = JSON.parse(saved);
-        return initialValue || [];
-    });
-    
-    useEffect(() => {
-        localStorage.setItem('Transaction', JSON.stringify(trans));
-    }, [trans]);
-    
 
     function submit(e) {
         e.preventDefault();
@@ -31,10 +21,8 @@ const PayForm = ({ total, loginUser, userList, updateUser, cart, clearCart }) =>
             swal("결제불가!", "상품을 먼저 선택해주세요.", "error");
             return;
         }
-        newTrans = { ...newTrans, date: new Date().toLocaleDateString(), menu: cart, amount: total };
-        // eslint-disable-next-line
-        updateUser(userList.map(user => (loginUser.id === user.id) ? { ...user, account: loginUser.account-total } : user));
-        (trans.length!==0) ? setTrans(prevTrans => ([...prevTrans, newTrans])) : setTrans([newTrans]);
+        newTrans = { ...newTrans, date: new Date().toLocaleDateString(), menu: cart, amount: -total };
+        WriteTrans(userList, loginUser, updateUser, newTrans);
         clearCart([]);  // 카트 초기화
 
         // 결제 완료 토스트 메시지 등록
