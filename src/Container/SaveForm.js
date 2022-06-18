@@ -7,12 +7,6 @@ import WriteTrans from '../Functions/WriteTrans';
 
 const SaveForm = ({ loginUser, userList, updateUser }) => {
     const [money, setMoney] = useState(0);
-
-    let newTrans = new Trans(
-        loginUser.phoneNumber.substring(7),
-        loginUser.name,
-        null,
-    );
     
     function onChange(e) {
         setMoney(Number(e.target.value));
@@ -24,7 +18,7 @@ const SaveForm = ({ loginUser, userList, updateUser }) => {
             swal("충전불가!", "충전 금액을 먼저 입력해주세요.", "error");
             return;
         }
-        newTrans = { ...newTrans, date: new Date().toLocaleDateString(), amount: money };
+        const newTrans = new Trans(loginUser.phoneNumber.substring(7), loginUser.name, new Date().toLocaleDateString(), money);
         WriteTrans(userList, loginUser, updateUser, newTrans);
         swal("완료!", "정상적으로 금액이 충전되었습니다.", "success");
     }

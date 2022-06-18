@@ -7,13 +7,6 @@ import WriteTrans from '../Functions/WriteTrans';
 
 
 const PayForm = ({ total, loginUser, userList, updateUser, cart, clearCart }) => {
-    let newTrans = new Trans(
-        loginUser.phoneNumber.substring(7),
-        loginUser.name,
-        null,
-        0,
-        cart,
-    );
 
     function submit(e) {
         e.preventDefault();
@@ -21,7 +14,9 @@ const PayForm = ({ total, loginUser, userList, updateUser, cart, clearCart }) =>
             swal("결제불가!", "상품을 먼저 선택해주세요.", "error");
             return;
         }
-        newTrans = { ...newTrans, date: new Date().toLocaleDateString(), menu: cart, amount: -total };
+        const newTrans = new Trans(loginUser.phoneNumber.substring(7), loginUser.name, new Date().toLocaleDateString(), -total, cart);
+        console.log(total);
+        
         WriteTrans(userList, loginUser, updateUser, newTrans);
         clearCart([]);  // 카트 초기화
 
