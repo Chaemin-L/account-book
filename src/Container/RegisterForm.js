@@ -6,29 +6,14 @@ import User from '../Database/User';
 const RegisterForm = ({addUser}) => {
     let newUser = new User();
 
-    function saveUser(e) {
-        const { name, value } = e.target;
-        newUser = {
-            ...newUser,
-            [name]: value,
-        };
-    }
-
-    function submit(e) {
-        e.preventDefault();
-        newUser.id = newUser.phoneNumber.substring(7);
-        newUser = { ...newUser, id: newUser.phoneNumber.substring(7) };
-        addUser(newUser);
-    }
-
     return (
         <div className="container-left">
             <form>
                 <label>이름</label>
-                <input name="name" onChange={saveUser}/>
+                <input name="name" onChange={newUser.save}/>
                 <label>전화번호</label>
-                <input name="phoneNumber" onChange={saveUser}/>
-                <Link to='/'><button onClick={submit}>등록하기</button></Link>
+                <input name="phoneNumber" onChange={newUser.save}/>
+                <Link to='/'><button onClick={(e)=>newUser.create(e, addUser)}>등록하기</button></Link>
             </form>
             <Link to="/"><button>돌아가기</button></Link>  
         </div>
